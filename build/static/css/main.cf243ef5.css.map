@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,OACI,WACA,gBACA,eACA,aACA,kBAAoB","file":"static/css/main.cf243ef5.css","sourcesContent":[".error {\r\n    color: white;\r\n    background: lightslategray;\r\n    font-size: 20px;\r\n    padding: 10px;\r\n    margin-bottom: 10px;\r\n}\n\n\n// WEBPACK FOOTER //\n// ./src/index.css"],"sourceRoot":""}
