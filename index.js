@@ -6,6 +6,9 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 
+// Mongoose modeli
+const Person = require('./models/person')
+
 app.use(express.static('build'))
 app.use(cors())
 app.use(bodyParser.json())
@@ -17,6 +20,8 @@ morgan.token('data', function (req, res) {
 })
 
 app.use(morgan(':method :url :data :res[content-length] - :response-time ms'))
+
+
 
 let persons = [
     {
@@ -42,8 +47,16 @@ let persons = [
 ]
 
 app.get('/api/persons', (req, res) => {
-    res.json(persons)
+    Person
+        .find({})
+        .then(persons => {
+            res.json(persons)
+        })
 })
+
+// app.get('/api/persons', (req, res) => {
+//     res.json(persons)
+// })
 // Info
 app.get('/info', (req, res) => {
     res.send(`<p> Puhelinluettelossa on ${persons.length} henkilön tiedot </p><p>${new Date()}</p>`)

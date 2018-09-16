@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
 require('dotenv').config()
 
+const mongoose = require('mongoose')
 const url = process.env.MONGODB_URI
 console.log(url)
 mongoose.connect(url)
@@ -9,6 +9,8 @@ const Person = mongoose.model('Person', {
     name: String,
     number: String
 })
+
+// 3.12 Logiikka
 // Katotaan onko annettu parametrejä (Node 0, mongo.js 1 siksi alkaa 2:lla)
 if (process.argv.length > 2) {
     // Luodaan olio annetuista parametreistä
