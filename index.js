@@ -97,16 +97,28 @@ app.post('/api/persons', (req, res) => {
         return res.status(400).json({ error: 'name must be unique' })
     }
 
-    const person = {
+    const person = new Person({
         name: body.name,
-        number: body.number,
-        id: Math.floor(Math.random() * Math.floor(10000))
-    }
+        number: body.number
+    })
 
-    persons = persons.concat(person)
-
-    res.json(person)
+    person
+        .save()
+        .then(savedPerson => {
+            res.json(Person.format(savedPerson))
+        })
 })
+
+//     const person = {
+//         name: body.name,
+//         number: body.number,
+//         id: Math.floor(Math.random() * Math.floor(10000))
+//     }
+
+//     persons = persons.concat(person)
+
+//     res.json(person)
+// })
 
 
 const PORT = process.env.PORT || 3001
